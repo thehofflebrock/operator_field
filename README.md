@@ -2,7 +2,7 @@
 
 A pipeline for turning AI-retrieved social media data into content you can trust, and the record of how it broke.
 
-Operator Field captured daily posts from a roster of AI and tech figures on X, recorded each post as a concrete subject with the poster's stance attached, and fed a synthesis layer meant to report what the field pays attention to and how that shifts. The newsletter it fed ran for about a week. The newsletter was the test. The pipeline is the product.
+Operator Field captured daily posts from a roster of AI and tech figures on X, recorded each post as a concrete subject with the poster's stance attached, and fed a synthesis layer meant to report what the field pays attention to and how that shifts. The newsletter it fed ran for about a week. The newsletter was the test. This repository documents the pipeline and its failures; it is not a runnable capture-to-dispatch application.
 
 ## Three failures that reported success
 
@@ -15,7 +15,7 @@ On June 10, 2026, the first version of the pipeline filtered at capture: list on
 The same run's Stage Two card for @pmarca cited three status IDs as his evidence. All three belong to @elonmusk. A status ID can't belong to two accounts. An independent pull of pmarca's day, 20 posts, contains none of them.
 
 **3. A pull declared a full morning empty.**
-The first June 14 pull returned exactly 10 posts for pmarca and stated "fewer than 10 results; no pagination required." It marked his 00:00-06:00 UTC window empty. That window held 10 posts. A second pull, after a prompt rewrite, returned 22 for pmarca, 32 for Marcus (first pull: 9), and 13 for @PalmerLuckey (first pull: 10).
+The first June 14 pull returned exactly 10 posts for pmarca and claimed that fewer than 10 results had returned and no pagination was required. It marked his 00:00-06:00 UTC window empty. That window held 10 posts. A second pull, after a prompt rewrite, returned 22 for pmarca, 32 for Marcus (first pull: 9), and 13 for @PalmerLuckey (first pull: 10).
 
 Full write-up with IDs: [docs/case-study.md](docs/case-study.md)
 
@@ -24,7 +24,7 @@ Full write-up with IDs: [docs/case-study.md](docs/case-study.md)
 | Failure | Structural fix |
 |---|---|
 | Gate at capture deleted real posts | Capture everything; the only cut is posts with no subject at all. Judgment moves to read time, where a mistake can be seen and reversed. |
-| Generated card misattributed posts | Raw fields are ground truth. No generated layer is trusted until rebuilt from raw. Every claim carries handle plus POST_ID. |
+| Generated card misattributed posts | Verify raw fields where possible, then rebuild derived judgments from verified raw material. Every claim carries handle plus POST_ID. |
 | Page one treated as the whole day | Paginate with `max_id` until a page returns under 10 or repeats. A heavy account reading thin on a busy day is flagged as pull loss, never recorded silent. |
 | Model-assigned labels drifted | The capture prompt stopped emitting TYPE labels and totals. Post type is computed downstream from structural fields. |
 
