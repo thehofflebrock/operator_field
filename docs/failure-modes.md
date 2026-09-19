@@ -4,7 +4,7 @@ Every failure below reported success. None threw an error.
 
 ## 1. Fabrication
 
-**What happened:** In-app Grok, asked for a full day, returned posts that did not exist. The gap between what it retrieved and what it expected a day to hold got filled with plausible content.
+**What happened:** The retrospective reports that in-app Grok, asked for a full day, returned posts that did not exist, filling the gap between what it retrieved and what it expected a day to hold with plausible content. See the documented instance below for the evidence limit.
 
 **Documented instance:** June 14, group G14. The retrospective reports fabricated output. The inspected source preserves an all-empty replacement and the line "That's the truthful version," but not the withdrawn output; its original contents are not independently established by that source.
 
