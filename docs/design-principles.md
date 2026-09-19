@@ -11,7 +11,7 @@ Rules that held across repeated runs.
 
 ## Trust
 
-- Raw fields are ground truth. Generated labels, subtotals, and summaries are suspect until rebuilt from raw.
+- Verify raw fields where possible; generated labels, subtotals, and summaries are suspect until rebuilt from verified raw.
 - Treat any tool's "complete" as unverified.
 - Mechanical checks belong in code, not in a prompt.
 - When a present-day claim looks too strong, verify it against outside sources. Don't rule it out by instinct either.
