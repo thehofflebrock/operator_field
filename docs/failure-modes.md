@@ -6,7 +6,7 @@ Every failure below reported success. None threw an error.
 
 **What happened:** In-app Grok, asked for a full day, returned posts that did not exist. The gap between what it retrieved and what it expected a day to hold got filled with plausible content.
 
-**Documented instance:** June 14, group G14. The fabricated output was replaced in the file by an all-empty result and the line "That's the truthful version."
+**Documented instance:** June 14, group G14. The retrospective reports fabricated output. The inspected source preserves an all-empty replacement and the line "That's the truthful version," but not the withdrawn output; its original contents are not independently established by that source.
 
 **Tells:**
 - Status IDs that disagree with timestamps when both are sorted. Real X IDs are time-ordered.
@@ -14,7 +14,7 @@ Every failure below reported success. None threw an error.
 - Generic content that could belong to anyone.
 - No match for the same ID in an independent pull.
 
-**Fix:** Narrow the window so there is no gap to fill. Verify by ID monotonicity, then cross-match specific IDs against a second pull. Click the URL on anything the analysis will build on. Monotonic IDs only catch lazy fakes; cross-pull matching was the only check that proved a run real.
+**Fix:** Narrow the window so there is no gap to fill. Verify by ID monotonicity, then cross-match specific IDs against a second pull. Click the URL on anything the analysis will build on. Monotonic IDs can expose some inconsistencies; cross-pull matches check agreement on specific records, not the authenticity or completeness of a whole run.
 
 **Contamination rule:** Posts whose IDs sort after the genuine last post of a window are excluded and held for the correct day, preventing double counting.
 
@@ -22,7 +22,7 @@ Every failure below reported success. None threw an error.
 
 **What happened:** The API returned partial pulls on high-volume days and presented them as complete.
 
-**Documented instance:** June 14. First pull: pmarca 10, Marcus 9, stated "fewer than 10; no pagination required," pmarca's 00:00-06:00 window marked empty. Second pull: 22 and 32. The "empty" window held 10 posts. See [case-study.md](case-study.md).
+**Documented instance:** June 14. First pull: pmarca 10, Marcus 9, claimed that fewer than 10 results had returned and no pagination was required; pmarca's 00:00-06:00 window marked empty. Second pull: 22 and 32. The "empty" window held 10 posts. See [case-study.md](case-study.md).
 
 **Tell:** A heavy account reading thin or absent on a busy day. Halving a window and finding the halves sum higher than the whole.
 
@@ -38,7 +38,7 @@ Every failure below reported success. None threw an error.
 
 **What happened:** The model assigned each post a single type (reply, quote, repost, original). "Reply to a quoted post" landed in different buckets on different days, which manufactured trends that weren't there.
 
-**Fix:** Trust raw fields only. Replace the single label with three independent booleans. Original is the absence of all three. Counts are computed by script from the booleans, never tallied by the model. Where a file claims more posts than it lists, report the listed count and flag the gap.
+**Fix:** Verify raw fields where possible, then derive labels from verified raw material. Replace the single label with three independent booleans. Original is the absence of all three. Counts are computed by script from the booleans, never tallied by the model. Where a file claims more posts than it lists, report the listed count and flag the gap.
 
 ## 5. Cross-account contamination
 
