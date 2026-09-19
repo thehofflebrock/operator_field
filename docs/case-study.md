@@ -43,7 +43,7 @@ Batch A's raw listing was also missing from the saved file; the cards for its ac
 
 ### Finding 3: Cross-pull agreement
 
-Eight IDs appear in both the Chain run and the dragnet, exactly: dylan522p, TheZvi x2, chamath, karpathy, pmarca x3. Matching specific IDs across independent pulls is what proved the rest of the run real.
+Eight IDs appear in both the Chain run and the dragnet, exactly: dylan522p, TheZvi x2, chamath, karpathy, pmarca x3. Those matches check agreement on those eight records; they do not establish the authenticity or completeness of the rest of the run.
 
 ## June 14: the same day, pulled twice
 
@@ -64,10 +64,12 @@ Between the two pulls, the capture prompt was rewritten: labels and totals remov
 
 ## Other documented incidents
 
-- **G14, June 14.** Grok's output for one group was replaced in the file by an all-empty result with the line "That's the truthful version." The fabricated version was withdrawn inside the document.
+- **G14, June 14.** Grok's output for one group was replaced in the file by an all-empty result with the line "That's the truthful version." The retrospective describes the replaced output as fabricated. The inspected source preserves the replacement, not the withdrawn output, so it does not independently establish what the earlier version contained.
 - **Window labels, June 15.** Posts filed under the wrong time window. Example: dylan522p `2066531792249561586`, decoded 14:42:28 UTC, filed under 00:00-06:00. The raw timestamp was right; the generated label was wrong.
 - **Single-account run, May 30 to June 11.** Roughly 10 posts per day for eleven days, almost all in the final window, with the note "returned exactly 10 per query with no additional pages needed." The empty earlier windows were a pagination artifact.
 
 ## What the case shows
 
-Each failure came from a layer the model generated on top of raw data: a qualification judgment, a card, a completeness claim, a window label. The raw fields (ID, text, timestamp) were right every time. That's the rule the pipeline ended on: trust raw, rebuild everything else, and prove a run with IDs from a second pull.
+In the incidents examined, the case-study record reports that checked raw fields (ID, text, and timestamp) matched live records. Failures appeared in generated judgments, attribution, window labels, and coverage: pulls omitted posts, and the retrospective reports fabricated output in the withdrawn G14 record. The surviving G14 source preserves the replacement, not the withdrawn material. Cross-pull ID matches check the specific records that match; they do not validate an entire run.
+
+Verify raw fields where possible, then rebuild derived judgments from verified raw material. Do not treat a successful status message as evidence of completeness. The prompt changes named defect conditions and required limitations to be surfaced; they do not establish that those defects were eliminated.
